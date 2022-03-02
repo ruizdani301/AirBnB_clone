@@ -16,15 +16,14 @@ class FileStorage():
     def new(self, obj):
         """add dictionary to __objects"""
         key_obj = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key_obj] = obj.to_dict()
+        self.__objects[key_obj] = obj
 
 
     def save(self):
         """creat a json file"""
         dic_json = {}
         for key, value in self.__objects.items():
-            #print("guarda \n",key, self.__objects[key], "\n")
-            dic_json[key] = value
+            dic_json[key] = value.to_dict()
         with open(self.__file_path, 'w') as f:
             json.dump(dic_json, f)
 
@@ -32,7 +31,10 @@ class FileStorage():
         """json file to dictionary again"""
         try:
             with open(self.__file_path, 'r') as f:
-                self.__objects = json.load(f)
+                for key, value in (json.load(f)).items():
+                    value = eval("{}(**value)".format(value['__class__']))
+                    print (type(value))
+                    self.__objects[key] = value
         except:
             pass
 
