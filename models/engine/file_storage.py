@@ -16,15 +16,15 @@ class FileStorage():
     def new(self, obj):
         """add dictionary to __objects"""
         key_obj = "{}.{}".format(obj.__class__.__name__, obj.id)
-        self.__objects[key_obj] = obj
+        self.__objects[key_obj] = obj.to_dict()
 
 
     def save(self):
         """creat a json file"""
         dic_json = {}
-        for key in self.__objects:
-            print("guarda \n",key, self.__objects[key], "\n")
-            #dic_json[key] = self.__objects[key].to_dict()
+        for key, value in self.__objects.items():
+            #print("guarda \n",key, self.__objects[key], "\n")
+            dic_json[key] = value
         with open(self.__file_path, 'w') as f:
             json.dump(dic_json, f)
 
