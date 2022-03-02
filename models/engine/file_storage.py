@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """serialize and deserealize BaseModel class"""
 
+
 import json
+
 
 class FileStorage():
     """class FileStorage"""
 
-    __file_path =  "file.json"
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -18,7 +20,6 @@ class FileStorage():
         key_obj = "{}.{}".format(obj.__class__.__name__, obj.id)
         self.__objects[key_obj] = obj
 
-
     def save(self):
         """creat a json file"""
         dic_json = {}
@@ -29,14 +30,14 @@ class FileStorage():
 
     def reload(self):
         """json file to dictionary again"""
+
         try:
+            from models.base_model import BaseModel
+
             with open(self.__file_path, 'r') as f:
                 for key, value in (json.load(f)).items():
-                    value = eval("{}(**value)".format(value['__class__']))
-                    print (type(value))
-                    self.__objects[key] = value
-        except:
+                    if value['__class__'] == "BaseModel":
+                        new_instance = BaseModel(**value)
+                    self.__objects[key] = new_instance
+        except Exception:
             pass
-
-
-
