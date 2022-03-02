@@ -27,7 +27,6 @@ class BaseModel():
             storage.save()
 
 
-
     def __str__(self):
         """str method"""
         return ("[{}] ({}) {}".format(self.__class__.__name__, self.id,
