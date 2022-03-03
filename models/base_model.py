@@ -42,5 +42,6 @@ class BaseModel():
         return new_dic
 
     def save(self):
+        """save method"""
         self.updated_at = datetime.now()
         storage.save()
