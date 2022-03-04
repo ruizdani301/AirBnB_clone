@@ -9,7 +9,7 @@ my_model.my_number = 89
 dir = my_model.to_dict()
 
 print (dir)
-""""
+"""
 new_model = BaseModel()
 new_model.name = "nueva_prueba"
 new_model.my_number = 753

@@ -25,7 +25,6 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel, saves it
            (to the JSON file) and prints the id
         """
-
         #print (args[1])
         if len(args) == 0:
             print ("** class name missing **")
@@ -94,9 +93,39 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name and id by adding or
            updating attribute (save the change into the JSON file)
         """
-        pass
+        
+        if len(args) == 0:
+            print ("** class name missing **")
+        else:
+            arg_split = args.split(" ")
+            
+            if arg_split[0] in fs.clases:
+                if len(arg_split) == 1:
+                    print ("** instance id missing **")
+                else:
+                    key = "{}.{}".format(arg_split[0], arg_split[1])
+                
+                    if key in fs.all():
+                        if len(arg_split) == 2:
+                            print ("** attribute name missing **")
+                        else:
+                            if len(arg_split) == 3:
+                                print ("** value missing **")
+                            else:
+                                li_insta = fs.all()
+                                insta = li_insta[key]
+                                setattr(insta, arg_split[2], arg_split[3])
+                
+                                li_dir = fs.dic_j()
+                                li_dir[key] = insta.to_dict()
+                                fs.update_json()
 
+                    else:
+                        print("** no instance found **")
+            else:
+                print ("** class doesn't exist **")
 
+        
 if __name__ == '__main__':
     interprete = HBNBCommand()
     interprete.cmdloop(intro="Bienvenido")

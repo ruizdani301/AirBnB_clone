@@ -1,1 +1,1 @@
-{"BaseModel.8673e4d8-56db-4abb-9920-50f7d4abaa49": {"id": "8673e4d8-56db-4abb-9920-50f7d4abaa49", "created_at": "2022-03-03T21:42:03.971254", "updated_at": "2022-03-03T21:42:03.971266", "__class__": "BaseModel"}}
+{"BaseModel.2f850d77-36e4-4c8d-8ad4-5303534d7a5a": {"id": "2f850d77-36e4-4c8d-8ad4-5303534d7a5a", "created_at": "2022-03-04T08:41:55.490640", "updated_at": "2022-03-04T08:41:55.490671", "nombre": "dani", "city": "nelson", "": "state", "state": "alberta", "__class__": "BaseModel"}}
