@@ -40,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints the string representation of an instance
            based on the class name and id
         """
-        clase = args.split(" ")
+        clase = args.split()
         if len(args) == 0:
             print ("** class name missing **")
         elif len(clase) == 1:
@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, args):
         """Deletes an instance based on the class name"""
 
-        clase = args.split(" ")
+        clase = args.split()
 
         if len(args) == 0:
             print ("** class name missing **")
@@ -88,23 +88,27 @@ class HBNBCommand(cmd.Cmd):
         for obj_key in all_objs.keys():
             obj = all_objs[obj_key]
             print(obj)
+        dir = (fs.all()["BaseModel.5c6a4e62-ccf9-4381-a1fb-524ba2e297bd"])
+        dir2 = dir.to_dict()
+        #["BaseModel.2f850d77-36e4-4c8d-8ad4-5303534d7a5a"])
+        print (type(dir2["w"]))
 
     def do_update(self, args):
         """Updates an instance based on the class name and id by adding or
            updating attribute (save the change into the JSON file)
         """
-        
+
         if len(args) == 0:
             print ("** class name missing **")
         else:
-            arg_split = args.split(" ")
-            
+            arg_split = args.split()
+
             if arg_split[0] in fs.clases:
                 if len(arg_split) == 1:
                     print ("** instance id missing **")
                 else:
                     key = "{}.{}".format(arg_split[0], arg_split[1])
-                
+
                     if key in fs.all():
                         if len(arg_split) == 2:
                             print ("** attribute name missing **")
@@ -114,8 +118,13 @@ class HBNBCommand(cmd.Cmd):
                             else:
                                 li_insta = fs.all()
                                 insta = li_insta[key]
-                                setattr(insta, arg_split[2], arg_split[3])
-                
+                                atri = arg_split[3]
+                                #if atri.isdecimal():
+                                #    atri = float(arg_split[3])
+                                if atri.isdigit():
+                                    atri = int(arg_split[3])
+                                setattr(insta, arg_split[2], atri)
+
                                 li_dir = fs.dic_j()
                                 li_dir[key] = insta.to_dict()
                                 fs.update_json()
@@ -125,7 +134,6 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print ("** class doesn't exist **")
 
-        
 if __name__ == '__main__':
     interprete = HBNBCommand()
     interprete.cmdloop(intro="Bienvenido")
