@@ -2,37 +2,100 @@
 
 import cmd
 
+from models.base_model import BaseModel
+from models import storage as fs
+
 class HBNBCommand(cmd.Cmd):
     """command interpreter"""
 
     prompt = "(hbnb) "
+    pass
 
     def do_quit(self, args):
+        """Quit command to exit the program"""
         #para salir
         return(True)
 
     def do_EOF(self, args):
+        """exit with crtl + d"""
         #para salir
         return(True)
 
     def do_create(self,args):
-        pass
+        """Creates a new instance of BaseModel, saves it
+           (to the JSON file) and prints the id
+        """
+
+        #print (args[1])
+        if len(args) == 0:
+            print ("** class name missing **")
+
+        elif args in fs.clases:
+            args = BaseModel()
+            print (args.id)
+
+        else:
+            print ("** class doesn't exist **")
 
     def do_show(self, args):
-        pass
+        """Prints the string representation of an instance
+           based on the class name and id
+        """
+        clase = args.split(" ")
+        if len(args) == 0:
+            print ("** class name missing **")
+        elif len(clase) == 1:
+            print ("** instance id missing **")
+
+        elif clase[0] in fs.clases:
+            key = args.replace(" ", ".")
+            if key in fs.all():
+                storage = fs.all()
+                print (storage[key])
+            else:
+                print("** no instance found **")
+        else:
+            print ("** class doesn't exist **")
 
     def do_destroy(self, args):
-        pass
+        """Deletes an instance based on the class name"""
+
+        clase = args.split(" ")
+
+        if len(args) == 0:
+            print ("** class name missing **")
+
+        elif clase[0] in fs.clases:
+            if len(clase) == 1:
+                print ("** instance id missing **")
+            else:
+                try:
+                    key = args.replace(" ", ".")
+                    del fs.dic_j()[key]
+                    del fs.all()[key]
+                    fs.update_json()
+
+                except Exception:
+                    print("** no instance found **")
+        else:
+            print ("** class doesn't exist **")
 
     def do_all(self, args):
-        pass
+        """Prints all string representation of all instances
+           based or not on the class name
+        """
+
+        all_objs = fs.all()
+        for obj_key in all_objs.keys():
+            obj = all_objs[obj_key]
+            print(obj)
 
     def do_update(self, args):
+        """Updates an instance based on the class name and id by adding or
+           updating attribute (save the change into the JSON file)
+        """
         pass
 
-    #def do_help(self, args):
-    #    print("saliste cacharro horrible")
-    #    pass
 
 if __name__ == '__main__':
     interprete = HBNBCommand()

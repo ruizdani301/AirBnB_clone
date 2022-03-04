@@ -3,11 +3,14 @@
 
 
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage():
     """class FileStorage"""
 
+    __dic_json = {}
+    clases = {"BaseModel": BaseModel}
     __file_path = "file.json"
     __objects = {}
 
@@ -22,22 +25,29 @@ class FileStorage():
 
     def save(self):
         """creat a json file"""
-        dic_json = {}
+
         for key, value in self.__objects.items():
-            dic_json[key] = value.to_dict()
+            self.__dic_json[key] = value.to_dict()
         with open(self.__file_path, 'w') as f:
-            json.dump(dic_json, f)
+            json.dump(self.__dic_json, f)
+
+    def update_json(self):
+        """update only json file from destroy method"""
+
+        with open(self.__file_path, 'w') as f:
+            json.dump(self.__dic_json, f)
+
+    def dic_j(self):
+        return(self.__dic_json)
 
     def reload(self):
         """json file to dictionary again"""
-
         try:
-            from models.base_model import BaseModel
 
             with open(self.__file_path, 'r') as f:
                 for key, value in (json.load(f)).items():
-                    if value['__class__'] == "BaseModel":
-                        new_instance = BaseModel(**value)
+                    cl = value['__class__']
+                    new_instance = self.clases[cl](**value)
                     self.__objects[key] = new_instance
         except Exception:
             pass
