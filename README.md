@@ -14,8 +14,11 @@ Cohort 16.
  Manual QA review must be done (request it when you are done with the project)
  An auto review will be launched at the deadline
 		  ```
+![image](https://user-images.githubusercontent.com/81341089/156898379-8e6dfffc-b217-4b41-9c69-fefc53af47c9.png)
 
 ## Description
+
+Airbnb is a community market that shares and exchanges goods and services between individuals through digital platforms so that a user can find accommodation in another person's home and not in a hotel, from common apartments to tree houses, igloos, geodomes, mills etc.
 
 Do you remember the Shell? It’s exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
 
