@@ -130,13 +130,7 @@ class HBNBCommand(cmd.Cmd):
                             else:
                                 li_insta = fs.all()
                                 insta = li_insta[key]
-                                try:
-                                    if atri.isnumeric():
-                                        atri = int(arg_split[3])
-                                    else:
-                                        atri = float(arg_split[3])
-                                except ValueError:
-                                    atri = arg_split[3]
+                                atri = arg_split[3]
                                 setattr(insta, arg_split[2], atri)
 
                                 li_dir = fs.dic_j()
