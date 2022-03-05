@@ -92,6 +92,18 @@ class Test_Base_Model(unittest.TestCase):
         self.assertEqual(first_dic['created_at'], second_dic['created_at'])
         self.assertNotEqual(first_dic['updated_at'], second_dic['updated_at'])
 
+    def testBaseModel(self):
+        """Test atributes value of a BaseModel instances"""
+
+        self.base.name = "My First Model"
+        self.base.my_number = "89"
+        self.base.save()
+        my_model_json = self.base.to_dict()
+
+        self.assertEqual(self.base.name, my_model_json['name'])
+        self.assertEqual(self.base.my_number, my_model_json['my_number'])
+        self.assertEqual('BaseModel', my_model_json['__class__'])
+
 
 if __name__ == '__main__':
     unittest.main()
