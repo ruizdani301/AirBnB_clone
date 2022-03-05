@@ -74,6 +74,24 @@ class Test_Base_Model(unittest.TestCase):
         date2 = self.base.updated_at
         self.assertNotEqual(date, date2)
 
+    def testsaveUpdate(self):
+        """Checks if save method updates the instances update_at"""
+
+        self.base.first_name = "Holberton"
+        self.base.save()
+
+        self.assertIsInstance(self.base.created_at, datetime)
+        self.assertIsInstance(self.base.updated_at, datetime)
+
+        first_dic = self.base.to_dict()
+
+        self.base.first_name = "School"
+        self.base.save()
+        second_dic = self.base.to_dict()
+
+        self.assertEqual(first_dic['created_at'], second_dic['created_at'])
+        self.assertNotEqual(first_dic['updated_at'], second_dic['updated_at'])
+
 
 if __name__ == '__main__':
     unittest.main()
