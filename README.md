@@ -89,6 +89,7 @@ Our shell has support for the following built-in commands:
 'in the following example the modules were imported and it shows the commands that were used to create the instances as well as the command that validates if there is an empty line "emptyline" and output "EOF"'
 
 #!/usr/bin/python3
+
 """ This is a module with the commands to use
     is possible add new commands
 """
