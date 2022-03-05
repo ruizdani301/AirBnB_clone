@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """base model of AirBnB console"""
-
 import uuid
 from datetime import datetime
 import models
