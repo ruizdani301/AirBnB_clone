@@ -12,6 +12,7 @@ class Test_Base_Model(unittest.TestCase):
 
     def test_created_class(self):
         """test when create a BaseModel"""
+
         base = BaseModel()
         self.assertEqual(BaseModel, type(base))
         self.assertEqual(str, type(base.id))
@@ -19,6 +20,8 @@ class Test_Base_Model(unittest.TestCase):
         self.assertEqual(datetime, type(base.updated_at))
 
     def test__init__kwargs(self):
+        """test create BaseModel with dictionary"""
+
         base = BaseModel()
         dic = base.to_dict()
         base2 = BaseModel(**dic)
@@ -30,6 +33,8 @@ class Test_Base_Model(unittest.TestCase):
         self.assertEqual(str, type(base.nomber))
 
     def test_to_dict(self):
+        """test that check the dictionary"""
+
         base = BaseModel()
         dic = base.to_dict()
         self.assertEqual(str, type(dic['updated_at']))
@@ -38,6 +43,8 @@ class Test_Base_Model(unittest.TestCase):
         self.assertEqual(dict, type(base.to_dict()))
 
     def test_save(self):
+        """test check method save()"""
+
         base = BaseModel()
         date = base.updated_at
         base.save()
@@ -48,4 +55,3 @@ class Test_Base_Model(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
