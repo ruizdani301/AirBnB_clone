@@ -90,11 +90,20 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances
            based or not on the class name
         """
-
         all_objs = fs.all()
-        for obj_key in all_objs.keys():
-            obj = all_objs[obj_key]
-            print(obj)
+        if len(args) == 0:
+
+            for obj_key in all_objs.keys():
+                obj = all_objs[obj_key]
+                print(obj)
+        else:
+            if args in fs.clases:
+                for obj_key in all_objs.keys():
+                    if (all_objs[obj_key]).to_dict()["__class__"] == args:
+                        obj = all_objs[obj_key]
+                        print(obj)
+            else:
+                print("** class doesn't exist **")
 
     def do_update(self, args):
         """Updates an instance based on the class name and id by adding or
