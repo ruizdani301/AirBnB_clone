@@ -48,16 +48,17 @@ class HBNBCommand(cmd.Cmd):
         clase = args.split()
         if len(args) == 0:
             print("** class name missing **")
-        elif len(clase) == 1:
-            print("** instance id missing **")
 
         elif clase[0] in fs.clases:
-            key = args.replace(" ", ".")
-            if key in fs.all():
-                storage = fs.all()
-                print(storage[key])
+            if len(clase) == 1:
+                print("** instance id missing **")
             else:
-                print("** no instance found **")
+                key = args.replace(" ", ".")
+                if key in fs.all():
+                    storage = fs.all()
+                    print(storage[key])
+                else:
+                    print("** no instance found **")
         else:
             print("** class doesn't exist **")
 
@@ -74,7 +75,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             else:
                 try:
-                    key = args.replace(" ", ".")
+                    key = "{}.{}".format(clase[0], clase[1])
+                    print(key)
                     del fs.dic_j()[key]
                     del fs.all()[key]
                     fs.update_json()
@@ -139,5 +141,4 @@ class HBNBCommand(cmd.Cmd):
 
 
 if __name__ == '__main__':
-    interprete = HBNBCommand()
-    interprete.cmdloop()
+    HBNBCommand().cmdloop()

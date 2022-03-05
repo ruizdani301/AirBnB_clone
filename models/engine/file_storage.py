@@ -12,7 +12,7 @@ from models.base_model import BaseModel
 from models.user import User
 
 
-class FileStorage():
+class FileStorage:
     """class FileStorage"""
 
     __dic_json = {}
