@@ -49,6 +49,7 @@ class FileStorage():
             json.dump(self.__dic_json, f)
 
     def dic_j(self):
+        """dictionary contain a dictionary of instances"""
         return(self.__dic_json)
 
     def reload(self):

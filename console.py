@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-""""""
+""" This is a module with the commands to use
+    is possible add new commands
+"""
+
 import cmd
 from models.base_model import BaseModel
 from models import storage as fs
@@ -12,7 +15,8 @@ class HBNBCommand(cmd.Cmd):
     pass
 
     def emptyline(self):
-        """empty the line"""
+        """pass an empty line and avoid to create
+           a new line"""
         pass
 
     def do_quit(self, args):
