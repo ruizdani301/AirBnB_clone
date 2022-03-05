@@ -2,30 +2,14 @@
 """This is the unittest for FileStorage"""
 import unittest
 from models.engine.file_storage import FileStorage
-from models.engine import file_storage
 from models.base_model import BaseModel
 import os
-
-
-FileStorage = file_storage.FileStorage
 
 
 class Test_FileStorage(unittest.TestCase):
     """unitest - Test FileStorage class"""
 
-    @classmethod
-    def createClass(cls):
-        """set up before every test method"""
-        cls.storage = FileStorage()
-
-    @classmethod
-    def del_json(cls):
-        """Remove test instances"""
-        del cls.storage
-        try:
-            os.remove("file.json")
-        except BaseException:
-            pass
+    storage = FileStorage()
 
     def test_all(self):
         """Test method All"""
