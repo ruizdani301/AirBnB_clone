@@ -1,12 +1,17 @@
 #!/usr/bin/python3
+"""test Base models"""
 
 from datetime import datetime
 import unittest
 from models.base_model import BaseModel
 
+
 class Test_Base_Model(unittest.TestCase):
+    """class test BaseModel"""
+
 
     def test_created_class(self):
+        """test when create a BaseModel"""
         base = BaseModel()
         self.assertEqual(BaseModel, type(base))
         self.assertEqual(str, type(base.id))
