@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""test Base models"""
+"""test Base models performs the tests of each
+   of the requirements of each method
+"""
 
 from datetime import datetime
 import unittest
@@ -7,10 +9,14 @@ from models.base_model import BaseModel
 
 
 class Test_Base_Model(unittest.TestCase):
-    """class test BaseModel"""
+    """class test BaseModel performs the tests of each
+       of the requirements of each method
+    """
 
     def test_created_class(self):
-        """test when create a BaseModel"""
+        """test when create a BaseModel
+           validating each operation
+        """
 
         base = BaseModel()
         self.assertEqual(BaseModel, type(base))
@@ -19,7 +25,9 @@ class Test_Base_Model(unittest.TestCase):
         self.assertEqual(datetime, type(base.updated_at))
 
     def test__init__kwargs(self):
-        """test create BaseModel with dictionary"""
+        """test create BaseModel with dictionary
+           validating each operation
+        """
 
         base = BaseModel()
         dic = base.to_dict()
@@ -32,7 +40,9 @@ class Test_Base_Model(unittest.TestCase):
         self.assertEqual(str, type(base.nomber))
 
     def test_to_dict(self):
-        """test that check the dictionary"""
+        """test that check the dictionary
+           validating each operation
+        """
 
         base = BaseModel()
         dic = base.to_dict()
@@ -42,7 +52,9 @@ class Test_Base_Model(unittest.TestCase):
         self.assertEqual(dict, type(base.to_dict()))
 
     def test_save(self):
-        """test check method save()"""
+        """test check method save()
+           validating each operation
+        """
 
         base = BaseModel()
         date = base.updated_at
