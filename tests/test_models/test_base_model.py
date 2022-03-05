@@ -9,7 +9,6 @@ from models.base_model import BaseModel
 class Test_Base_Model(unittest.TestCase):
     """class test BaseModel"""
 
-
     def test_created_class(self):
         """test when create a BaseModel"""
 
@@ -50,7 +49,6 @@ class Test_Base_Model(unittest.TestCase):
         base.save()
         date2 = base.updated_at
         self.assertNotEqual(date, date2)
-
 
 
 if __name__ == '__main__':
