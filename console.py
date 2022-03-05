@@ -12,10 +12,8 @@ class HBNBCommand(cmd.Cmd):
     pass
 
     def emptyline(self):
+        """empty the line"""
         pass
-
-    def default(self, args):
-        print(args)
 
     def do_quit(self, args):
         """Quit command to exit the program"""
@@ -91,10 +89,6 @@ class HBNBCommand(cmd.Cmd):
         for obj_key in all_objs.keys():
             obj = all_objs[obj_key]
             print(obj)
-        #dir = (fs.all()["BaseModel.5c6a4e62-ccf9-4381-a1fb-524ba2e297bd"])
-        #dir2 = dir.to_dict()
-        #["BaseModel.2f850d77-36e4-4c8d-8ad4-5303534d7a5a"])
-        #print (type(dir2["x"]))
 
     def do_update(self, args):
         """Updates an instance based on the class name and id by adding or
