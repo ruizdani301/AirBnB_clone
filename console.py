@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-
+""""""
 import cmd
-
 from models.base_model import BaseModel
 from models import storage as fs
+
 
 class HBNBCommand(cmd.Cmd):
     """command interpreter"""
@@ -11,30 +11,33 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     pass
 
+    def emptyline(self):
+        pass
+
+    def default(self, args):
+        print(args)
+
     def do_quit(self, args):
         """Quit command to exit the program"""
-        #para salir
         return(True)
 
     def do_EOF(self, args):
         """exit with crtl + d"""
-        #para salir
         return(True)
 
-    def do_create(self,args):
+    def do_create(self, args):
         """Creates a new instance of BaseModel, saves it
            (to the JSON file) and prints the id
         """
-        #print (args[1])
         if len(args) == 0:
-            print ("** class name missing **")
+            print("** class name missing **")
 
         elif args in fs.clases:
-            args = BaseModel()
-            print (args.id)
+            args = fs.clases[args]()
+            print(args.id)
 
         else:
-            print ("** class doesn't exist **")
+            print("** class doesn't exist **")
 
     def do_show(self, args):
         """Prints the string representation of an instance
@@ -42,19 +45,19 @@ class HBNBCommand(cmd.Cmd):
         """
         clase = args.split()
         if len(args) == 0:
-            print ("** class name missing **")
+            print("** class name missing **")
         elif len(clase) == 1:
-            print ("** instance id missing **")
+            print("** instance id missing **")
 
         elif clase[0] in fs.clases:
             key = args.replace(" ", ".")
             if key in fs.all():
                 storage = fs.all()
-                print (storage[key])
+                print(storage[key])
             else:
                 print("** no instance found **")
         else:
-            print ("** class doesn't exist **")
+            print("** class doesn't exist **")
 
     def do_destroy(self, args):
         """Deletes an instance based on the class name"""
@@ -62,11 +65,11 @@ class HBNBCommand(cmd.Cmd):
         clase = args.split()
 
         if len(args) == 0:
-            print ("** class name missing **")
+            print("** class name missing **")
 
         elif clase[0] in fs.clases:
             if len(clase) == 1:
-                print ("** instance id missing **")
+                print("** instance id missing **")
             else:
                 try:
                     key = args.replace(" ", ".")
@@ -77,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
                 except Exception:
                     print("** no instance found **")
         else:
-            print ("** class doesn't exist **")
+            print("** class doesn't exist **")
 
     def do_all(self, args):
         """Prints all string representation of all instances
@@ -88,10 +91,10 @@ class HBNBCommand(cmd.Cmd):
         for obj_key in all_objs.keys():
             obj = all_objs[obj_key]
             print(obj)
-        dir = (fs.all()["BaseModel.5c6a4e62-ccf9-4381-a1fb-524ba2e297bd"])
-        dir2 = dir.to_dict()
+        #dir = (fs.all()["BaseModel.5c6a4e62-ccf9-4381-a1fb-524ba2e297bd"])
+        #dir2 = dir.to_dict()
         #["BaseModel.2f850d77-36e4-4c8d-8ad4-5303534d7a5a"])
-        print (type(dir2["w"]))
+        #print (type(dir2["x"]))
 
     def do_update(self, args):
         """Updates an instance based on the class name and id by adding or
@@ -99,30 +102,32 @@ class HBNBCommand(cmd.Cmd):
         """
 
         if len(args) == 0:
-            print ("** class name missing **")
+            print("** class name missing **")
         else:
             arg_split = args.split()
 
             if arg_split[0] in fs.clases:
                 if len(arg_split) == 1:
-                    print ("** instance id missing **")
+                    print("** instance id missing **")
                 else:
                     key = "{}.{}".format(arg_split[0], arg_split[1])
 
                     if key in fs.all():
                         if len(arg_split) == 2:
-                            print ("** attribute name missing **")
+                            print("** attribute name missing **")
                         else:
                             if len(arg_split) == 3:
-                                print ("** value missing **")
+                                print("** value missing **")
                             else:
                                 li_insta = fs.all()
                                 insta = li_insta[key]
-                                atri = arg_split[3]
-                                #if atri.isdecimal():
-                                #    atri = float(arg_split[3])
-                                if atri.isdigit():
-                                    atri = int(arg_split[3])
+                                try:
+                                    if atri.isnumeric():
+                                        atri = int(arg_split[3])
+                                    else:
+                                        atri = float(arg_split[3])
+                                except ValueError:
+                                    atri = arg_split[3]
                                 setattr(insta, arg_split[2], atri)
 
                                 li_dir = fs.dic_j()
@@ -132,7 +137,8 @@ class HBNBCommand(cmd.Cmd):
                     else:
                         print("** no instance found **")
             else:
-                print ("** class doesn't exist **")
+                print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     interprete = HBNBCommand()

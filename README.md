@@ -1,26 +1,32 @@
-# SIMPLE SHELL
+# AirBnB clone
 
-## Our Gates of sHELL. 0x16. C - simple_shell
+## 0x00. AirBnB clone - The console
 
 ```
 For Holberton School.
 Cohort 16.
 ```
-   By Julien Barbier, co-founder & CEO
-   Project to be done in teams of 2 people (our team: Daniel Rivera, Diego jojoa.
-   Ongoing project - started 11-25-2021, must end by 12-09-2021 (in 14 days) - you're done with 0% of tasks.
-   Checker will be released at 12-07-2021 09:07 PM.
-   Manual QA review must be done (request it when you are done with the project)
-   QA review fully automated.
+   By Guillaume
+ Weight: 5
+ Project to be done in teams of 2 people (your team: Daniel Rivera, Jorge Orlando Calambás Conda
+ Ongoing project - started 02-28-2022, must end by 03-07-2022 (in 2 days) - you're done with 0% of tasks.
+ Checker will be released at 03-05-2022 06:00 AM
+ Manual QA review must be done (request it when you are done with the project)
+ An auto review will be launched at the deadline
 		  ```
 
 ## Description
 
-The simple shell is an simple application that reads lines from the terminal, interprets them, and executes them. This shell includes simple basic functionality of a traditional Unix-like command line user interface. Standard functions and system calls employed in simple_shell include: `stat, execve, exit, fork, free, getline, malloc, perror, wait, write.`
+Do you remember the Shell? It’s exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
 
+Create a new object (ex: a new User or a new Place)
+Retrieve an object from a file, a database etc…
+Do operations on objects (count, compute stats, etc…)
+Update attributes of an object
+Destroy an object
 ## Requirements
 
-simple_shell is designed to run in the `Ubuntu 20.04.5 LTS` linux environment and to be compiled using the GNU compiler with flags`-Wall, -Werror, -Wextra, and -pedantic.`
+
 
 ## Installation
 
@@ -36,9 +42,9 @@ After compilation, the resulting program can run in interactive or non-interacti
 
 #### Interactive Mode
 
-In interactive mode, simply run the program and wait for the prompt to appear. From there, you can type commands freely,
+In interactive mode, simply run the program with ()./console) and wait for the prompt to appear. From there, you can type commands freely,
 
-Example `pwd` , `ls -l`, `echo "Hola mundo!"`, `etc.`
+Example `create BaseModel` , `all`, `destroy BaseModel (id)  `etc.`
 
 #### Non-Interactive Mode
 
@@ -65,32 +71,19 @@ Our shell has support for the following built-in commands:
 
 | File                   | Details                                       |
 |----------------------- | ------------------------------------------    |
-| [simple_shell.c](./hsh)| interpret a command and display it in output  |
-| [main.h](./hsh)        | containts all the prototypes                  |
-| [path.c](./hsh)        | compares the strings of the PATH 		 |
-| [codes.c](./hsh)	 | functions for printing and handle strings     |
-| [free.c](./hsh)	 | function for free a double pointer	         |
-| [built-ins.c](./hsh)	 | get the built-in function accord to a command |
-| [_string.c](./hsh)	 | compare count and concatenate the strings	 |
+| [file.storage.py] | interpret a command and display it in output  |
+| [__init__.py]        | containts all the prototypes                  |
+| [base_model]        | compares the strings of the PATH 		 |
+| [city.py]	 | functions for printing and handle strings     |
+| [place.py]	 | function for free a double pointer	         |
+| [review.py]	 | get the built-in function accord to a command |
+| [state.py] | compare count and concatenate the strings	 |
+| [user.py] | compare count and concatenate the strings	 |
+| [amenity.py] | compare count and concatenate the strings	 |
 
 ## Examples
 
-```sh
-$ ls -l
-total 8
-drwxrwxr-x 1 vagrant vagrant Dec 2 13:23 hsh
-drwxrwxr-x 2 vagrant vagrant Dec 2 20:30 README.md
-```
 
-```sh
-$ /bin/pwd
-/home/vagrant/shell
-```
-
-```sh
-$ hello world
-./hsh: 1: hello: not found
-```
 
 ## Authors
 ```
