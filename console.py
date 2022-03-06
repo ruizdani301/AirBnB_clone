@@ -50,7 +50,6 @@ class HBNBCommand(cmd.Cmd):
                     k = separate2[0].replace('"', '')
                     name_atr = separate2[1].replace('"', '')
                     value_atr = separate2[2].replace('"', '')
-                    #print(name_atr, value_atr)
                     key = "{} {}".format(clase, k)
                     key = "{} {} {}".format(key, name_atr, value_atr)
                     print(key)

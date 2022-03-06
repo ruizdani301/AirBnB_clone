@@ -54,8 +54,8 @@ class Test_FileStorage(unittest.TestCase):
         with open("file.json", "w") as writer:
             writer.write("{}")
         with open("file.json", "r") as reader:
-            for l in reader:
-                self.assertEqual(l, "{}")
+            for i in reader:
+                self.assertEqual(i, "{}")
         self.assertIs(self.storage.reload(), None)
 
 
