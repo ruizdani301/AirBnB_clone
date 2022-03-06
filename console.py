@@ -39,6 +39,8 @@ class HBNBCommand(cmd.Cmd):
                 elif(name_command == self.list_command[1]):
                     key = "{} {}".format(clase, key)
                     self.do_show(key)
+                elif(name_command == self.list_command[2]):
+                    self.do_count(clase)
         else:
             print("*** Unknown syntax: ", args)
 
@@ -49,6 +51,18 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, args):
         """exit with crtl + d"""
         return(True)
+
+    def do_count(self, args):
+        """shows the number of instances"""
+        all_objs = fs.all()
+        cant = 0
+        if args in fs.clases:
+            for obj_key in all_objs.keys():
+                if (all_objs[obj_key]).to_dict()["__class__"] == args:
+                    cant += 1
+            print(cant)
+        else:
+            print("** class doesn't exist **")
 
     def do_create(self, args):
         """Creates a new instance of BaseModel, saves it
