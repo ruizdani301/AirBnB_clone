@@ -24,6 +24,7 @@ class HBNBCommand(cmd.Cmd):
         """operation or commands for default"""
         clase = ""
         key = ""
+        parameters = ""
         separate = args.split(".")
         if separate[0] in fs.clases:
             clase = separate[0]
@@ -31,9 +32,9 @@ class HBNBCommand(cmd.Cmd):
             pos1 = name_command.find("(") + 1
             pos2 = name_command.rfind(")")
             for x in range(pos1, pos2):
-                key = key + name_command[x]
-            name_command = name_command.replace(key, "")
-            key = key.replace('"', '')
+                parameters = parameters + name_command[x]
+            name_command = name_command.replace(parameters, "")
+            key = parameters.replace('"', '')
             if name_command in self.list_command:
                 key = "{} {}".format(clase, key)
                 if(name_command == self.list_command[0]):
@@ -44,6 +45,17 @@ class HBNBCommand(cmd.Cmd):
                     self.do_count(clase)
                 elif(name_command == self.list_command[3]):
                     self.do_destroy(key)
+                elif(name_command == self.list_command[4]):
+                    separate2 = parameters.split(",")
+                    k = separate2[0].replace('"', '')
+                    name_atr = separate2[1].replace('"', '')
+                    value_atr = separate2[2].replace('"', '')
+                    #print(name_atr, value_atr)
+                    key = "{} {}".format(clase, k)
+                    key = "{} {} {}".format(key, name_atr, value_atr)
+                    print(key)
+                    self.do_update(key)
+
         else:
             print("*** Unknown syntax: ", args)
 
