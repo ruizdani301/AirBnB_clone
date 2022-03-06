@@ -13,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     pass
-    list_command = ["all()", "show()", "count()", "destroy(), update()"]
+    list_command = ["all()", "show()", "count()", "destroy()", "update()"]
 
     def emptyline(self):
         """pass an empty line and avoid to create
@@ -21,6 +21,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def default(self, args):
+        """operation or commands for default"""
         clase = ""
         key = ""
         separate = args.split(".")
@@ -34,13 +35,15 @@ class HBNBCommand(cmd.Cmd):
             name_command = name_command.replace(key, "")
             key = key.replace('"', '')
             if name_command in self.list_command:
+                key = "{} {}".format(clase, key)
                 if(name_command == self.list_command[0]):
                     self.do_all(clase)
                 elif(name_command == self.list_command[1]):
-                    key = "{} {}".format(clase, key)
                     self.do_show(key)
                 elif(name_command == self.list_command[2]):
                     self.do_count(clase)
+                elif(name_command == self.list_command[3]):
+                    self.do_destroy(key)
         else:
             print("*** Unknown syntax: ", args)
 
@@ -113,7 +116,6 @@ class HBNBCommand(cmd.Cmd):
             else:
                 try:
                     key = "{}.{}".format(clase[0], clase[1])
-                    print(key)
                     del fs.dic_j()[key]
                     del fs.all()[key]
                     fs.update_json()
