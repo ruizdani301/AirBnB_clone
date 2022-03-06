@@ -13,11 +13,34 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
     pass
+    list_command = ["all()", "show()", "count()", "destroy(), update()"]
 
     def emptyline(self):
         """pass an empty line and avoid to create
            a new line"""
         pass
+
+    def default(self, args):
+        clase = ""
+        key = ""
+        separate = args.split(".")
+        if separate[0] in fs.clases:
+            clase = separate[0]
+            name_command = separate[1]
+            pos1 = name_command.find("(") + 1
+            pos2 = name_command.rfind(")")
+            for x in range(pos1, pos2):
+                key = key + name_command[x]
+            name_command = name_command.replace(key, "")
+            key = key.replace('"', '')
+            if name_command in self.list_command:
+                if(name_command == self.list_command[0]):
+                    self.do_all(clase)
+                elif(name_command == self.list_command[1]):
+                    key = "{} {}".format(clase, key)
+                    self.do_show(key)
+        else:
+            print("*** Unknown syntax: ", args)
 
     def do_quit(self, args):
         """Quit command to exit the program"""
