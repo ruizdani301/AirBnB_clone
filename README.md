@@ -56,6 +56,7 @@ Updated_on Date Modified
 
 
 #### Usage
+![Diagrama en blanco](https://user-images.githubusercontent.com/81341089/157085487-53ca36a4-4b97-49da-980d-6b504e0c8b30.png)
 
 In interactive mode, simply run the program with ()./console) and wait for the prompt to appear. From there, you can type commands freely,
 
