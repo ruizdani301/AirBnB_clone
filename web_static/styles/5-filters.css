@@ -52,13 +52,12 @@ button:hover
 {
     color: rgb(20, 19, 19);
     font-weight: 600;
-    margin: 5%  ;
+    margin: 15px 0px 1px 0px;
 }
 .filters h4
 {
     font-weight: 400;
     font-size: 14px;
     color: rgb(17, 14, 14);
-    margin: 5%;
+    border-top: 1%;
 }
-

@@ -71,8 +71,14 @@ class HBNBCommand(cmd.Cmd):
         all_objs = fs.all()
         cant = 0
         if args in fs.clases:
+            #recorre el obj de file storage
             for obj_key in all_objs.keys():
-                if (all_objs[obj_key]).to_dict()["__class__"] == args:
+                #Encuentra la instancia
+                instancia = (all_objs[obj_key])
+                #regresa el diccionario de la instancia
+                dic_instancia = instancia.to_dict()
+                #compara la llave class con args
+                if (dic_instancia)["__class__"] == args:
                     cant += 1
             print(cant)
         else:

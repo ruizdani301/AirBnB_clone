@@ -39,77 +39,41 @@ button:hover
     width: 25%;
     border-right: 1px solid #DDDDDD;
     margin-left: 5%;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 .amenities
 {
     height: 100%;
     width: 25%;
     margin-left: 30px;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 .filters h3
 {
     color: rgb(20, 19, 19);
     font-weight: 600;
-    margin: 5%  ;
+    margin: 15px 0px 1px 0px;
+    background-color: aqua;
 }
 .filters h4
 {
     font-weight: 400;
     font-size: 14px;
     color: rgb(17, 14, 14);
-    margin: 5%;
+    border-top: 1%;
+    /*margin: 5px 0px 1px 0px;*/
+    background: #FF5A5F;
 }
-/**
-*-------- popover
+
+/*-------- popover
+*
 */
-.filters .locations {
-    background: white;
-    height: 100%;
-    width: 25%;
-    border-right:  #DDDDDD 1px solid;
-}
 
-.filters.amenities {
-    background: white;
-    height: 100%;
-    width: 25%;
-    border-right:  #DDDDDD 1px solid;
-}
-
-.filters h3 {
-    font-weight: 600;
-    margin-left: 20%;
-}
-
-.filters h4 {
-    font-weight: 400;
-    font-size: 14px;
-    margin-left: 20%;
-}
-
-.filters .locations .popover {
-    background: #FAFAFA;
-    width: 100%;
-    border: #DDDDDD 1px solid;
-}
-
-.amenities .popover li
-{
-    display: none;
-}
 
 .amenities:hover > .popover li
 {
     display: block;
 }
-
-.locations .popover li
-{
-    display: none;
-}
-
 .locations:hover > .popover li
 {
     display: block;
@@ -119,12 +83,38 @@ button:hover
     color:rgb(17, 14, 14);
     margin-left: 5%;
 }
-.popover li
+.locations .popover li
 {
+    margin-left: 20%;
     color:rgb(17, 14, 14);
-    margin-left: 10%;
+    display: none;
 }
+
 .amenities .popover li
 {
     margin-left: 20%;
+    color:rgb(17, 14, 14);
+    display: none;
+}
+.amenities ul
+{
+    background-color: rgba(245, 245, 245, 0.667);
+    width: 29%;
+    list-style: none;
+    position: absolute;
+    margin-top: 16px;
+    margin-left: -30px;
+    border-radius: 4px;
+    border: 1px #DDDDDD solid;
+}
+.locations ul
+{
+    background-color: rgba(245, 245, 245, 0.667);
+    width: 30%;
+    list-style: none;
+    position: absolute;
+    margin-top: 16px;
+    margin-left: -49px;
+    border-radius: 4px;
+    border: 1px #DDDDDD solid;
 }
